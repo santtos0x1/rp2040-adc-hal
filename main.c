@@ -6,21 +6,34 @@
 
 int main()
 {
-    
+    // Resets bits 5(IO_BANK0) and 8(PADS_BANK0) from reset register
     *RESETSREG_BIT_SET &= ~(IO_BANK0_BIT | PADS_BANK0_BIT);
+
+    // Waits until the reset is done
     while(!IS_RESET_DONE()){}
 
-    // Set GPIO 25 to SIO
+    // Sets GPIO 25 to SIO
     *GPIO25_SET_FUNCT = GPIO_FUNC_SIO; 
 
-    // Set output enable to GPIO 25
+    // Sets output enable to GPIO 25
     *GPIO_OE_SET = GPIO25_BIT;
 
-    *SET_ADC_CS &= TS_EN_BIT;
-    *SET_ADC_CS &= START_ONCE_BIT;
+    // Enables bit 1(TS_EN) to power on temperature sensor
+    *SET_ADC_CS |= TS_EN_BIT;
+    while(1)
+    {
+        // Enables bit 2(START_ONCE) to get internal temperature 
+        *SET_ADC_CS |= START_ONCE_BIT;
+    
+        // Gets the internal raw temperature
+        volatile uint32_t *raw_result_ptr = GET_ADC_RESULT;
+        
+        // Converts the raw data to milli celsius
+        uint32_t internal_temperature = get_temp_milli_celsius(*raw_result_ptr);
 
-    volatile uint32_t *raw_result_ptr = GET_ADC_RESULT;
-    uint32_t ADC_voltage = get_temp_milli_celsius(*raw_result_ptr);
+        // Shows the temperature in celsius
+        printf("%2f", internal_temperature/1000)
+    }
 
     return 0;
 }
