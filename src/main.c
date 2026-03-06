@@ -32,7 +32,7 @@ int main()
         uint32_t internal_temperature = get_temp_milli_celsius(*raw_result_ptr);
 
         // Shows the temperature in celsius
-        printf("%2f", internal_temperature/1000)
+        printf("%d", internal_temperature);
     }
 
     return 0;

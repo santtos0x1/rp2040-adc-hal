@@ -33,9 +33,15 @@ project(internal_temp_sensor C CXX ASM)
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
+include_directories(include)
+
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(internal_temp_sensor main.c hadware_init.c adc_converter.c)
+add_executable(internal_temp_sensor 
+    src/main.c 
+    src/hadware_init.c 
+    src/adc_converter.c
+)
 
 pico_set_program_name(internal_temp_sensor "internal_temp_sensor")
 pico_set_program_version(internal_temp_sensor "0.1")
@@ -50,7 +56,7 @@ target_link_libraries(internal_temp_sensor
 
 # Add the standard include files to the build
 target_include_directories(internal_temp_sensor PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
+        ${CMAKE_CURRENT_LIST_DIR}/include
 )
 
 pico_add_extra_outputs(internal_temp_sensor)
