@@ -35,7 +35,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(internal_temp_sensor main.c )
+add_executable(internal_temp_sensor main.c hadware_init.c)
 
 pico_set_program_name(internal_temp_sensor "internal_temp_sensor")
 pico_set_program_version(internal_temp_sensor "0.1")
