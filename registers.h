@@ -9,5 +9,7 @@
 #define RESETS_DONE          RESETS_BASE   + 0x8
 #define GPIO25_CTRL          IO_BANK0_BASE + 0x0cc
 #define GPIO_OE_SET_OFFSET   SIO_BASE      + 0x024
+#define ADC_INTERNAL_CS      ADC_BASE      + 0x00
+#define ADC_INTERNAL_RESULT  ADC_BASE      + 0x04
 
 #endif
