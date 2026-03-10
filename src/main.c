@@ -33,6 +33,15 @@ int main()
 
         // Shows the temperature in celsius
         printf("%d", internal_temperature);
+
+        if(internal_temperature > 33000)
+        {
+            *GPIO_OUT_SET = GPIO25_BIT;
+        }
+        else
+        {
+            *GPIO_OUT_CLR = GPIO25_BIT; 
+        }
     }
 
     return 0;

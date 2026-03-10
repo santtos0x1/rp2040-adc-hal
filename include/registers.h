@@ -11,5 +11,7 @@
 #define GPIO_OE_SET_OFFSET   SIO_BASE      + 0x024
 #define ADC_INTERNAL_CS      ADC_BASE      + 0x00
 #define ADC_INTERNAL_RESULT  ADC_BASE      + 0x04
+#define GPIO_OUT_SET_OFFSET  SIO_BASE      + 0x014
+#define GPIO_OUT_CLR_OFFSET  SIO_BASE      + 0x018
 
 #endif

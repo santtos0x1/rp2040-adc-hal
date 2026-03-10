@@ -9,6 +9,8 @@
 #define GPIO_OE_SET       ((volatile uint32_t *)(GPIO_OE_SET_OFFSET))
 #define SET_ADC_CS        ((volatile uint32_t *)(ADC_INTERNAL_CS))
 #define GET_ADC_RESULT    ((volatile uint32_t *)(ADC_INTERNAL_RESULT))
+#define GPIO_OUT_SET      ((volatile uint32_t *)(GPIO_OUT_SET_OFFSET))
+#define GPIO_OUT_CLR      ((volatile uint32_t *)(GPIO_OUT_CLR_OFFSET))
 
 #define IO_BANK0_BIT      (1 << 5)
 #define PADS_BANK0_BIT    (1 << 8)
