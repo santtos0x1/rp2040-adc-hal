@@ -3,14 +3,23 @@
 #include "config.h"
 #include "hadware_init.h"
 #include "adc_converter.h"
+#include <string.h>
 
 int main()
 {
+    bit_bank_t bit_bank;
+
+    // Sets bits to 1 in a 32 bit bitset
+    bit_bank.bit_arr |= (IO_BANK0_BIT | PADS_BANK0_BIT);
+
     // Resets bits 5(IO_BANK0) and 8(PADS_BANK0) from reset register
-    *RESETSREG_BIT_SET &= ~(IO_BANK0_BIT | PADS_BANK0_BIT);
+    *RESETSREG_BIT_SET &= ~(bit_bank.bit_arr);
 
     // Waits until the reset is done
-    while(!IS_RESET_DONE()){}
+    while(!IS_RESET_DONE(bit_bank)){}
+
+    // Resets bitset from struct
+    memset(&bit_bank, 0, sizeof(bit_bank_t));
 
     // Sets GPIO 25 to SIO
     *GPIO25_SET_FUNCT = GPIO_FUNC_SIO; 
