@@ -1,49 +1,33 @@
 #include <stdio.h>
 #include <stdint.h>
-#include "config.h"
-#include "hadware_init.h"
 #include "adc_converter.h"
-#include <string.h>
+#include "gpio_init.h"
+#include "adc_init.h"
+#include "adc_get_temp.h"
+#include "registers.h"
+
+#define WARNING_MCU_TEMP 33000
+#define GPIO_OUT_SET     ((volatile uint32_t *)(GPIO_OUT_SET_OFFSET))
+#define GPIO_OUT_CLR     ((volatile uint32_t *)(GPIO_OUT_CLR_OFFSET))
+#define GPIO25_BIT       (1 << 25)
 
 int main()
 {
-    bit_bank_t bit_bank;
+    gpio_init();
+    adc_init();
 
-    // Sets bits to 1 in a 32 bit bitset
-    bit_bank.bit_arr |= (IO_BANK0_BIT | PADS_BANK0_BIT);
-
-    // Resets bits 5(IO_BANK0) and 8(PADS_BANK0) from reset register
-    *RESETSREG_BIT_SET &= ~(bit_bank.bit_arr);
-
-    // Waits until the reset is done
-    while(!IS_RESET_DONE(bit_bank)){}
-
-    // Resets bitset from struct
-    memset(&bit_bank, 0, sizeof(bit_bank_t));
-
-    // Sets GPIO 25 to SIO
-    *GPIO25_SET_FUNCT = GPIO_FUNC_SIO; 
-
-    // Sets output enable to GPIO 25
-    *GPIO_OE_SET = GPIO25_BIT;
-
-    // Enables bit 1(TS_EN) to power on temperature sensor
-    *SET_ADC_CS |= TS_EN_BIT;
     while(1)
     {
-        // Enables bit 2(START_ONCE) to get internal temperature 
-        *SET_ADC_CS |= START_ONCE_BIT;
-    
         // Gets the internal raw temperature
-        volatile uint32_t *raw_result_ptr = GET_ADC_RESULT;
+        volatile uint32_t raw_result_ptr = get_raw_v();
         
         // Converts the raw data to milli celsius
-        uint32_t internal_temperature = get_temp_milli_celsius(*raw_result_ptr);
+        uint32_t internal_temperature = get_temp_milli_celsius(raw_result_ptr);
 
         // Shows the temperature in celsius
-        printf("%d", internal_temperature);
+        printf("Temp: %d", internal_temperature);
 
-        if(internal_temperature > 33000)
+        if(internal_temperature > WARNING_MCU_TEMP)
         {
             *GPIO_OUT_SET = GPIO25_BIT;
         }

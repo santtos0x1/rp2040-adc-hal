@@ -3,6 +3,6 @@
 
 #include <stdint.h>
 
-int32_t get_temp_milli_celsius(uint16_t raw_value);
+uint32_t get_temp_milli_celsius(uint16_t raw_value);
 
 #endif

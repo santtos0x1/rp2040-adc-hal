@@ -4,7 +4,7 @@
 /*
  * @brief Converts the raw value got from ADC register to temperature
  */
-int32_t get_temp_milli_celsius(uint16_t raw_value)
+uint32_t get_temp_milli_celsius(uint16_t raw_value)
 {
     // Gets voltage
     int32_t mv = (raw_value * 3300) / 4096;
