@@ -5,13 +5,14 @@
 
 int main()
 {
+    // For USB debugging
     stdio_init_all();
    
+    // Short delay
     __asm volatile ("nop");
 
     // Starts driver
     init_thermal_m();
-
 
     while(1)
     {
