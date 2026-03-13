@@ -12,8 +12,6 @@
 #define AINSEL_SHIFT    12 // Start bit
 #define AINSEL_MUX_MASK (0x7 << AINSEL_SHIFT) // (14, 13, 12)
 
-#define MS_CLK_DELAY   100000
-
 volatile uint32_t get_raw_v(void)
 {
     // Clears AINSEL bits (000)
@@ -27,6 +25,12 @@ volatile uint32_t get_raw_v(void)
 
     // Enables bit 2(START_ONCE) to get internal temperature 
     *SET_ADC_CS |= START_ONCE_BIT;
+
+    // Waits until finish conversion
+    while(!(*SET_ADC_CS & READY_BIT)){};
+
+    // No operation assembly tag for "delay"
+    __asm volatile ("nop");
 
     return *GET_ADC_RESULT;
 }
