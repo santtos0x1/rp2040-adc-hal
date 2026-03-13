@@ -1,6 +1,7 @@
-#include "adc_get_temp.h"
 #include <stdint.h>
+
 #include "registers.h"
+#include "adc_get_temp.h"
 
 #define GET_ADC_RESULT ((volatile uint32_t *)(ADC_INTERNAL_RESULT))
 #define SET_ADC_CS     ((volatile uint32_t *)(ADC_INTERNAL_CS))

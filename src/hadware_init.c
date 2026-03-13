@@ -1,6 +1,7 @@
 #include <stdint.h>
-#include "registers.h"
 #include <stdint.h>
+
+#include "registers.h"
 #include "hadware_init.h"
 
 /*

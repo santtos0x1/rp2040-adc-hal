@@ -1,6 +1,7 @@
-#include "thermal_manager.h"
 #include <stdint.h>
+
 #include "adc_converter.h"
+#include "thermal_manager.h"
 #include "gpio_init.h"
 #include "adc_init.h"
 #include "adc_get_temp.h"

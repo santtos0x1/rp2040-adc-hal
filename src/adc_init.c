@@ -1,4 +1,5 @@
 #include <stdint.h>
+
 #include "adc_init.h"
 #include "registers.h"
 

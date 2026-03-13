@@ -1,6 +1,8 @@
 #include <stdint.h>
-#include "thermal_manager.h"
 #include <stdio.h>
+
+#include "thermal_manager.h"
+
 #include "pico/stdlib.h"
 
 int main()
