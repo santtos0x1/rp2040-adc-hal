@@ -44,6 +44,7 @@ add_executable(internal_temp_sensor
     src/adc_get_temp.c
     src/gpio_init.c
     src/adc_init.c
+    src/thermal_manager.c
 )
 
 pico_set_program_name(internal_temp_sensor "internal_temp_sensor")

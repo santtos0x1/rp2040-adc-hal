@@ -16,7 +16,6 @@
 void gpio_init_per(void)
 {
     bit_bank_t bit_bank;
-
     // Sets bits to 1 in a 32 bit bitset
     bit_bank.bit_arr |= (IO_BANK0_BIT | PADS_BANK0_BIT | ADC_BIT);
 
