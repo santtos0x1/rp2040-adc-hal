@@ -1,5 +1,10 @@
 # RP2040 ADC Temperature HAL
 
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Language: C](https://img.shields.io/badge/Language-C-red.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
+[![Platform: RP2040](https://img.shields.io/badge/Platform-RP2040-orange.svg)](https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html)
+[![Status: Stable](https://img.shields.io/badge/Status-Stable-brightgreen.svg)]()
+
 A lightweight, bare-metal hardware abstraction layer (HAL) for the **RP2040** microcontroller, designed to monitor the internal temperature sensor.
 
 This driver provides a clean interface to interact with hardware registers, abstracting low-level complexity. It is written in pure C and relies solely on standard C libraries, **requiring no external dependencies** (no Pico SDK required).
