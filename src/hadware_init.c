@@ -5,7 +5,7 @@
 #include "hadware_init.h"
 
 /*
- * @brief Check if reset register 
+ * @brief Check if reset register is already  
  */
 uint8_t IS_RESET_DONE(bit_bank_t bit_bank)
 {

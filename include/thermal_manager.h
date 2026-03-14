@@ -4,6 +4,6 @@
 #include <stdint.h>
 
 void init_thermal_m(void);
-uint32_t get_thermal(void);
+int32_t get_thermal(void);
 
 #endif

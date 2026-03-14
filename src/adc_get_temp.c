@@ -13,7 +13,7 @@
 #define AINSEL_SHIFT    12 // Start bit
 #define AINSEL_MUX_MASK (0x7 << AINSEL_SHIFT) // (14, 13, 12)
 
-volatile uint32_t get_raw_v(void)
+volatile uint16_t get_raw_v(void)
 {
     // Clears AINSEL bits (000)
     *SET_ADC_CS &= ~(AINSEL_MUX_MASK);

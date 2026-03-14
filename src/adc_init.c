@@ -4,9 +4,13 @@
 #include "registers.h"
 
 #define SET_ADC_CS ((volatile uint32_t *)(ADC_INTERNAL_CS))
+
 #define TS_EN_BIT  (1 << 1)
 #define ADC_EN_BIT (1 << 0)
 
+/*
+ * @brief Starts all required ADC bits
+ */
 void adc_init_per(void)
 {
     // Enables bit 0(EN) to power ADC and enable clock

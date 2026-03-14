@@ -3,6 +3,6 @@
 
 #include <stdint.h>
 
-volatile uint32_t get_raw_v(void);
+volatile uint16_t get_raw_v(void);
 
 #endif

@@ -16,16 +16,18 @@
 
 #define GPIO_FUNC_SIO     5
 
+/*
+ * @brief Starts all required GPIO bits 
+*/
 void gpio_init_per(void)
 {
     bit_bank_t bit_bank;
+
     // Sets bits to 1 in a 32 bit bitset
     bit_bank.bit_arr |= (IO_BANK0_BIT | PADS_BANK0_BIT | ADC_BIT);
 
     // Reset bits from reset register
     *RESETSREG_BIT_SET &= ~(bit_bank.bit_arr);
-
-    // Waits until the reset is done
     while(!IS_RESET_DONE(bit_bank)){}
 
     // Resets bitset from struct

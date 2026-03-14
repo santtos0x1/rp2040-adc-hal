@@ -18,7 +18,7 @@ int main()
 
     while(1)
     {
-        uint32_t mcu_temp = get_thermal();
+        int32_t mcu_temp = get_thermal();
 
         printf("RP2040 Temperature: %d\n", mcu_temp);
     }
